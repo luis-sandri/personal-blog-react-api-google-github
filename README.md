@@ -11,7 +11,12 @@ Um blog pessoal moderno e completo construído com Next.js 15, React 19, TypeScr
 
 Este é um blog pessoal full-stack onde compartilho conhecimentos, experiências e aprendizados sobre desenvolvimento de software. O projeto possui um sistema completo de gerenciamento de conteúdo (CMS) integrado, permitindo criar, editar e publicar posts de forma fácil e intuitiva.
 
-**Link do Repositório:** [https://github.com/luis-sandri/personal-blog-react-api-google-github](https://github.com/luis-sandri/personal-blog-react-api-google-github)
+**Link do site:** [https://personal-blog-react-api-google-gith-six.vercel.app](https://personal-blog-react-api-google-gith-six.vercel.app)
+
+<img width="1909" height="873" alt="image" src="https://github.com/user-attachments/assets/68b69ea6-9df0-4b0f-99fb-c1301a27a6cd" />
+<img width="1909" height="867" alt="image" src="https://github.com/user-attachments/assets/105824d2-6d1f-40f9-9693-44140a294774" />
+<img width="1918" height="878" alt="image" src="https://github.com/user-attachments/assets/54b8ecbb-92f5-408b-b59b-7e3aba0bff18" />
+
 
 ## ✨ Funcionalidades
 
