@@ -210,7 +210,7 @@ export default function AdminCommentsPage() {
                   <div className="flex gap-2">
                     {comment.status !== 'approved' && (
                       <Button
-                        variant="outline"
+                        variant="ghost"
                         size="sm"
                         onClick={() => handleUpdateStatus(comment.id, 'approved')}
                       >
@@ -219,7 +219,7 @@ export default function AdminCommentsPage() {
                     )}
                     {comment.status !== 'rejected' && (
                       <Button
-                        variant="outline"
+                        variant="ghost"
                         size="sm"
                         onClick={() => handleUpdateStatus(comment.id, 'rejected')}
                       >

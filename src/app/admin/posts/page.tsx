@@ -130,7 +130,7 @@ export default function AdminPostsPage() {
                     </td>
                     <td className="px-6 py-4 text-right text-sm font-medium space-x-2">
                       <Link href={`/admin/posts/${post.id}/edit`}>
-                        <Button variant="outline" size="sm">
+                        <Button variant="ghost" size="sm">
                           Editar
                         </Button>
                       </Link>

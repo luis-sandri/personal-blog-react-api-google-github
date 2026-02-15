@@ -58,7 +58,7 @@ export function ImageUpload({ onUpload, currentImage }: ImageUploadProps) {
         >
           <Button
             type="button"
-            variant="outline"
+            variant="ghost"
             size="sm"
             disabled={uploading}
             onClick={() => document.getElementById('image-upload')?.click()}

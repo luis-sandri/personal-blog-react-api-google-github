@@ -159,7 +159,7 @@ export default function AdminCategoriesPage() {
                     </td>
                     <td className="px-6 py-4 text-right space-x-2">
                       <Button
-                        variant="outline"
+                        variant="ghost"
                         size="sm"
                         onClick={() => handleEdit(category)}
                       >
@@ -219,7 +219,7 @@ export default function AdminCategoriesPage() {
           </div>
 
           <div className="flex justify-end gap-2 mt-6">
-            <Button variant="outline" type="button" onClick={handleCloseModal}>
+            <Button variant="ghost" type="button" onClick={handleCloseModal}>
               Cancelar
             </Button>
             <Button type="submit">

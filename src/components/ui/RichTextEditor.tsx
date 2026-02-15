@@ -176,7 +176,7 @@ export function RichTextEditor({
         >
           Link
         </Button>
-        <Button type="button" variant="outline" size="sm" onClick={addImage}>
+        <Button type="button" variant="ghost" size="sm" onClick={addImage}>
           Imagem
         </Button>
 
@@ -184,7 +184,7 @@ export function RichTextEditor({
 
         <Button
           type="button"
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().undo()}
@@ -193,7 +193,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant="outline"
+          variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().redo()}
