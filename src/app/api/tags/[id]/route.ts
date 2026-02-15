@@ -8,15 +8,16 @@ import { tagSchema } from '@/lib/validations/tag';
 // GET /api/tags/[id] - Get single tag
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const supabase = createAdminClient();
 
     const { data: tag, error } = await supabase
       .from('tags')
       .select('*')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (error || !tag) {
@@ -39,9 +40,10 @@ export async function GET(
 // PUT /api/tags/[id] - Update tag (admin only)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -56,7 +58,7 @@ export async function PUT(
     const { data: tag, error } = await supabase
       .from('tags')
       .update(validatedData)
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
@@ -80,9 +82,10 @@ export async function PUT(
 // DELETE /api/tags/[id] - Delete tag (admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -91,7 +94,7 @@ export async function DELETE(
 
     const supabase = createAdminClient();
 
-    const { error } = await supabase.from('tags').delete().eq('id', params.id);
+    const { error } = await supabase.from('tags').delete().eq('id', id);
 
     if (error) {
       return NextResponse.json(

@@ -8,15 +8,16 @@ import { categorySchema } from '@/lib/validations/category';
 // GET /api/categories/[id] - Get single category
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const supabase = createAdminClient();
 
     const { data: category, error } = await supabase
       .from('categories')
       .select('*')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (error || !category) {
@@ -39,9 +40,10 @@ export async function GET(
 // PUT /api/categories/[id] - Update category (admin only)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -56,7 +58,7 @@ export async function PUT(
     const { data: category, error } = await supabase
       .from('categories')
       .update(validatedData)
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
@@ -80,9 +82,10 @@ export async function PUT(
 // DELETE /api/categories/[id] - Delete category (admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -94,7 +97,7 @@ export async function DELETE(
     const { error } = await supabase
       .from('categories')
       .delete()
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (error) {
       return NextResponse.json(

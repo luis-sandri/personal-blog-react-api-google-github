@@ -6,9 +6,10 @@ import { createClient } from '@/lib/supabase/server';
 // DELETE /api/comments/[id] - Delete comment (admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -17,7 +18,7 @@ export async function DELETE(
 
     const supabase = await createClient();
 
-    const { error } = await supabase.from('comments').delete().eq('id', params.id);
+    const { error } = await supabase.from('comments').delete().eq('id', id);
 
     if (error) {
       return NextResponse.json(
@@ -39,9 +40,10 @@ export async function DELETE(
 // PATCH /api/comments/[id] - Update comment status (admin only)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
 
     if (!session?.user || session.user.role !== 'admin') {
@@ -60,7 +62,7 @@ export async function PATCH(
     const { data: comment, error } = await supabase
       .from('comments')
       .update({ status })
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
