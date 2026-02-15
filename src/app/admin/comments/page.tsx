@@ -119,25 +119,25 @@ export default function AdminCommentsPage() {
       {/* Filter tabs */}
       <div className="flex gap-2 mb-6">
         <Button
-          variant={filter === 'all' ? 'primary' : 'outline'}
+          variant={filter === 'all' ? 'primary' : 'ghost'}
           onClick={() => setFilter('all')}
         >
           Todos ({statusCounts.all})
         </Button>
         <Button
-          variant={filter === 'pending' ? 'primary' : 'outline'}
+          variant={filter === 'pending' ? 'primary' : 'ghost'}
           onClick={() => setFilter('pending')}
         >
           Pendentes ({statusCounts.pending})
         </Button>
         <Button
-          variant={filter === 'approved' ? 'primary' : 'outline'}
+          variant={filter === 'approved' ? 'primary' : 'ghost'}
           onClick={() => setFilter('approved')}
         >
           Aprovados ({statusCounts.approved})
         </Button>
         <Button
-          variant={filter === 'rejected' ? 'primary' : 'outline'}
+          variant={filter === 'rejected' ? 'primary' : 'ghost'}
           onClick={() => setFilter('rejected')}
         >
           Rejeitados ({statusCounts.rejected})

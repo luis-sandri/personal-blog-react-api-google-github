@@ -78,7 +78,7 @@ export function RichTextEditor({
       <div className="bg-gray-50 border-b border-gray-300 p-2 flex flex-wrap gap-1">
         <Button
           type="button"
-          variant={editor.isActive('bold') ? 'primary' : 'outline'}
+          variant={editor.isActive('bold') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleBold().run()}
         >
@@ -86,7 +86,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('italic') ? 'primary' : 'outline'}
+          variant={editor.isActive('italic') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleItalic().run()}
         >
@@ -94,7 +94,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('strike') ? 'primary' : 'outline'}
+          variant={editor.isActive('strike') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleStrike().run()}
         >
@@ -105,7 +105,7 @@ export function RichTextEditor({
 
         <Button
           type="button"
-          variant={editor.isActive('heading', { level: 1 }) ? 'primary' : 'outline'}
+          variant={editor.isActive('heading', { level: 1 }) ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         >
@@ -113,7 +113,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('heading', { level: 2 }) ? 'primary' : 'outline'}
+          variant={editor.isActive('heading', { level: 2 }) ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         >
@@ -121,7 +121,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('heading', { level: 3 }) ? 'primary' : 'outline'}
+          variant={editor.isActive('heading', { level: 3 }) ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         >
@@ -132,7 +132,7 @@ export function RichTextEditor({
 
         <Button
           type="button"
-          variant={editor.isActive('bulletList') ? 'primary' : 'outline'}
+          variant={editor.isActive('bulletList') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
         >
@@ -140,7 +140,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('orderedList') ? 'primary' : 'outline'}
+          variant={editor.isActive('orderedList') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
         >
@@ -151,7 +151,7 @@ export function RichTextEditor({
 
         <Button
           type="button"
-          variant={editor.isActive('blockquote') ? 'primary' : 'outline'}
+          variant={editor.isActive('blockquote') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
         >
@@ -159,7 +159,7 @@ export function RichTextEditor({
         </Button>
         <Button
           type="button"
-          variant={editor.isActive('codeBlock') ? 'primary' : 'outline'}
+          variant={editor.isActive('codeBlock') ? 'primary' : 'ghost'}
           size="sm"
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         >
@@ -170,7 +170,7 @@ export function RichTextEditor({
 
         <Button
           type="button"
-          variant={editor.isActive('link') ? 'primary' : 'outline'}
+          variant={editor.isActive('link') ? 'primary' : 'ghost'}
           size="sm"
           onClick={setLink}
         >
