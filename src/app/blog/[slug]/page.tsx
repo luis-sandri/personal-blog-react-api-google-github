@@ -60,6 +60,8 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  // Type assertion for category (Supabase returns object for many-to-one)
+  const category = post.category as any as { id: string; name: string; slug: string } | null;
   const tags = post.tags?.map((t: any) => t.tag) || [];
 
   return (
@@ -86,7 +88,7 @@ export default async function PostPage({ params }: PostPageProps) {
       {/* Header */}
       <header className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Badge variant="info">{post.category.name}</Badge>
+          {category && <Badge variant="info">{category.name}</Badge>}
           <time className="text-sm text-gray-600">
             {formatDate(post.created_at)}
           </time>
