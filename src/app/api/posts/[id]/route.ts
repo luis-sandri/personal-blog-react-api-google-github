@@ -28,15 +28,14 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
         tags:post_tags(tag:tags(id, name, slug))
       `
       )
-      .eq('id', id)
-      .single();
+      .eq('id', id);
 
     // Only show published posts to non-admins
     if (session?.user?.role !== 'admin') {
       query = query.eq('status', 'published');
     }
 
-    const { data, error } = await query;
+    const { data, error } = await query.single();
 
     if (error) {
       if (error.code === 'PGRST116') {
