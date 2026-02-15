@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
       if (session?.user) {
         // Add token data to session
         session.user.id = token.id as string;
-        session.user.role = token.role as string;
+        session.user.role = token.role as 'admin' | 'user';
       }
       return session;
     },
