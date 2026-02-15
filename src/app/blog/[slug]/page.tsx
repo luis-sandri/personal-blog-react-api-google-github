@@ -140,12 +140,14 @@ export default async function PostPage({ params }: PostPageProps) {
             ← Voltar para o blog
           </Link>
 
-          <Link
-            href={`/blog/categoria/${post.category.slug}`}
-            className="text-blue-600 hover:text-blue-700 font-medium"
-          >
-            Ver mais em {post.category.name} →
-          </Link>
+          {category && (
+            <Link
+              href={`/blog/categoria/${category.slug}`}
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Ver mais em {category.name} →
+            </Link>
+          )}
         </div>
       </footer>
 
