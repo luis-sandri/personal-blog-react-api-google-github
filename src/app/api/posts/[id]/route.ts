@@ -78,9 +78,16 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     const validated = postUpdateSchema.parse(body);
     const { tags, ...postData } = validated;
 
-    // Update published_at if status changed to published
-    if (validated.status === 'published' && !postData.published_at) {
-      postData.published_at = new Date().toISOString();
+    // Get current post to check published_at
+    const { data: currentPost } = await supabase
+      .from('posts')
+      .select('published_at')
+      .eq('id', id)
+      .single();
+
+    // Update published_at if status changed to published and not set yet
+    if (validated.status === 'published' && !currentPost?.published_at) {
+      (postData as any).published_at = new Date().toISOString();
     }
 
     const { data: post, error: postError } = await supabase
