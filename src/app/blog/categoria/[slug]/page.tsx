@@ -4,12 +4,14 @@ import { createClient } from '@/lib/supabase/server';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { formatDate } from '@/lib/utils/formatDate';
+import { isSupabaseConfigured } from '@/lib/supabase/config';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
+  if (!isSupabaseConfigured) return { title: 'Categoria não encontrada' };
   const { slug } = await params;
   const supabase = await createClient();
 
@@ -30,6 +32,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
+  if (!isSupabaseConfigured) notFound();
   const { slug } = await params;
   const supabase = await createClient();
 

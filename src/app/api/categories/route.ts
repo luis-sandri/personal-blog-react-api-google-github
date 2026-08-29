@@ -4,9 +4,11 @@ import { authOptions } from '@/lib/auth/options';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { categorySchema } from '@/lib/validations/category';
+import { isSupabaseConfigured } from '@/lib/supabase/config';
 
 // GET /api/categories - List all categories
 export async function GET() {
+  if (!isSupabaseConfigured) return NextResponse.json([]);
   try {
     const supabase = await createClient();
 

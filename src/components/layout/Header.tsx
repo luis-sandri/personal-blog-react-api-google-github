@@ -1,47 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-import { UserMenu } from '@/components/auth/UserMenu';
-import { Button } from '@/components/ui/Button';
-import { BookOpen } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+
+const links = [{ href: '/blog', label: 'Artigos' }, { href: '/projetos', label: 'Projetos' }, { href: '/sobre', label: 'Sobre' }, { href: '/contato', label: 'Contato' }];
 
 export function Header() {
-  const { data: session } = useSession();
-
-  return (
-    <header className="sticky top-0 z-40 w-full border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-semibold text-xl">
-            <BookOpen className="h-6 w-6 text-blue-600" />
-            <span>Blog Pessoal</span>
-          </Link>
-
-          <nav className="flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Início
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Blog
-            </Link>
-
-            {session ? (
-              <UserMenu />
-            ) : (
-              <Link href="/signin">
-                <Button size="sm">Entrar</Button>
-              </Link>
-            )}
-          </nav>
-        </div>
-      </div>
-    </header>
-  );
+  const [open, setOpen] = useState(false);
+  return <header className="sticky top-0 z-40 border-b bg-[color:var(--color-bg)]/95 backdrop-blur"><div className="site-container flex h-16 items-center justify-between"><Link href="/" className="font-['Space_Grotesk'] text-lg font-bold tracking-tight">Luís <span className="text-[var(--color-primary)]">Sandri</span></Link><nav className="hidden items-center gap-6 md:flex" aria-label="Navegação principal">{links.map(link => <Link key={link.href} href={link.href} className="text-sm font-medium hover:text-[var(--color-primary)]">{link.label}</Link>)}<ThemeToggle /></nav><div className="flex items-center gap-2 md:hidden"><ThemeToggle /><button aria-label="Abrir menu" onClick={() => setOpen(!open)} className="grid h-9 w-9 place-items-center rounded-md border">{open ? <X size={18}/> : <Menu size={18}/>}</button></div></div>{open && <nav className="site-container flex flex-col gap-4 border-t py-5 md:hidden" aria-label="Navegação mobile">{links.map(link => <Link key={link.href} onClick={() => setOpen(false)} href={link.href} className="font-medium">{link.label}</Link>)}</nav>}</header>;
 }

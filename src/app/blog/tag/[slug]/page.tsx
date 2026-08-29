@@ -3,12 +3,14 @@ import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Card } from '@/components/ui/Card';
 import { formatDate } from '@/lib/utils/formatDate';
+import { isSupabaseConfigured } from '@/lib/supabase/config';
 
 interface TagPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: TagPageProps) {
+  if (!isSupabaseConfigured) return { title: 'Tag não encontrada' };
   const { slug } = await params;
   const supabase = await createClient();
 
@@ -29,6 +31,7 @@ export async function generateMetadata({ params }: TagPageProps) {
 }
 
 export default async function TagPage({ params }: TagPageProps) {
+  if (!isSupabaseConfigured) notFound();
   const { slug } = await params;
   const supabase = await createClient();
 

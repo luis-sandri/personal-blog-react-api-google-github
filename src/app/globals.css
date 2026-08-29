@@ -1,27 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #f3f0e8; --color-surface: #fff; --color-text: #111; --color-text-muted: #6f7479; --color-border: #d7dadd;
+  --color-primary: #f5b301; --color-primary-foreground: #111; --color-blue: #3fa7ff; --color-green: #61d095;
+  --color-graphite: #2b2b2b; --color-gray-tech: #bfc4c9; --background: var(--color-bg); --foreground: var(--color-text);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+[data-theme='dark'] { --color-bg: #111; --color-surface: #1a1a1a; --color-text: #f3f0e8; --color-text-muted: #bfc4c9; --color-border: #2b2b2b; }
+* { border-color: var(--color-border); }
+html { scroll-behavior: smooth; }
+body { color: var(--color-text); background: var(--color-bg); font-family: 'Inter', Arial, sans-serif; }
+h1, h2, h3, h4 { font-family: 'Space Grotesk', Arial, sans-serif; letter-spacing: -0.04em; }
+a { text-underline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+.font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+.tech-label { font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.site-container { width: min(1200px, calc(100% - 2rem)); margin-inline: auto; }
+.section-rule { border-top: 1px solid var(--color-border); }
+.grid-technical { background-image: linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px); background-size: 32px 32px; }
+.arrow-link:hover .arrow { transform: translateX(4px); }
+.arrow { display: inline-block; transition: transform 180ms ease; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) { --color-bg: #111; --color-surface: #1a1a1a; --color-text: #f3f0e8; --color-text-muted: #bfc4c9; --color-border: #2b2b2b; } }

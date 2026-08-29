@@ -5,8 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Blog Pessoal",
-  description: "Um blog pessoal moderno com Next.js",
+  title: { default: "Luís Sandri | Tecnologia sem se perder", template: "%s | Luís Sandri" },
+  description: "Engenharia de Software, backend, cloud, IA e projetos reais — da faculdade ao mercado.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}" }} /></head>
       <body className="antialiased min-h-screen flex flex-col">
         <Providers>
           <Header />

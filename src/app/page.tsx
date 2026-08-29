@@ -1,86 +1,17 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { BookOpen, Code, Coffee } from 'lucide-react';
+import { ArrowUpRight, Braces, Cloud, Cpu } from 'lucide-react';
+
+const articles = [
+  { tag: 'career', title: 'Construir experiência antes do primeiro estágio', text: 'O que estou aprendendo ao transformar faculdade, estudo e projetos em repertório real.' },
+  { tag: 'aws', title: 'O que a cloud mudou na minha forma de pensar sistemas', text: 'Menos abstração, mais clareza sobre escolhas, custo e arquitetura.' },
+  { tag: 'build', title: 'Projetos que ensinam mais que tutoriais', text: 'Como sair do código de exemplo e criar algo que resolve um problema.' },
+];
+const projects = [{ name: 'CampusTrack', stack: 'Python • FastAPI • AWS', text: 'Uma forma mais clara de acompanhar demandas dentro do ambiente universitário.' }];
 
 export default function Home() {
-  return (
-    <div className="container mx-auto px-4">
-      {/* Hero Section */}
-      <section className="py-20 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Olá, Bem-vindo!
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Compartilhando conhecimento, experiências e aprendizados sobre desenvolvimento de software.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Link href="/blog">
-            <Button size="lg">
-              <BookOpen className="mr-2 h-5 w-5" />
-              Explorar Artigos
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Sobre este Blog</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-            Este é um espaço onde compartilho meus aprendizados, experiências e insights sobre desenvolvimento web,
-            tecnologias modernas e boas práticas de programação.
-          </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            Aqui você encontrará artigos sobre React, Next.js, TypeScript, Node.js e muito mais.
-          </p>
-        </div>
-      </section>
-
-      {/* Topics Section */}
-      <section className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Temas Principais</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow">
-            <Code className="h-12 w-12 text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Desenvolvimento Web</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Tutoriais e dicas sobre frameworks modernos como React, Next.js e tecnologias web.
-            </p>
-          </div>
-
-          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow">
-            <Coffee className="h-12 w-12 text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Boas Práticas</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Aprenda sobre clean code, arquitetura de software e padrões de projeto.
-            </p>
-          </div>
-
-          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow">
-            <BookOpen className="h-12 w-12 text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Experiências</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Compartilhando experiências reais de projetos e desafios do dia a dia.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Explore o Blog</h2>
-          <p className="text-xl mb-6 opacity-90">
-            Confira os últimos artigos e aprenda algo novo hoje!
-          </p>
-          <Link href="/blog">
-            <Button size="lg" variant="secondary">
-              Ver Todos os Posts
-            </Button>
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+  return <div><section className="site-container grid min-h-[620px] items-center gap-12 py-20 lg:grid-cols-[1.1fr_.9fr] lg:py-28"><div><p className="tech-label mb-6 text-[var(--color-text-muted)]">student_dev <span className="ml-2 text-[var(--color-primary)]">{'// status: building'}</span></p><h1 className="max-w-3xl text-5xl font-bold leading-[.94] sm:text-6xl lg:text-7xl">Construindo <span className="text-[var(--color-primary)]">software</span>, carreira e conhecimento.</h1><p className="mt-7 max-w-xl text-lg leading-8 text-[var(--color-text-muted)]">Engenharia de Software, backend, cloud, IA e projetos reais — da faculdade ao mercado.</p><div className="mt-9 flex flex-wrap gap-3"><Link className="rounded-lg border border-[var(--color-primary)] bg-[var(--color-primary)] px-5 py-3 font-medium text-[#111] transition-transform hover:-translate-y-0.5" href="/blog">Ver artigos →</Link><Link className="rounded-lg border px-5 py-3 font-medium" href="/projetos">Projetos</Link></div></div><div className="grid-technical relative min-h-[360px] overflow-hidden border bg-[var(--color-surface)]"><div className="absolute left-[13%] top-[16%] h-20 w-20 bg-[var(--color-primary)]"/><div className="absolute right-[11%] top-[27%] h-32 w-32 border-8 border-[var(--color-text)]"/><div className="absolute bottom-[17%] left-[26%] flex h-28 w-48 items-end border border-[var(--color-border)] bg-[var(--color-graphite)] p-4"><span className="font-mono-tech text-xs text-[var(--color-primary)]">build()<br/>learning++</span></div><div className="absolute bottom-8 right-8 font-mono-tech text-xs text-[var(--color-text-muted)]">01 / system</div></div></section>
+  <section className="section-rule"><div className="site-container py-20"><div className="mb-10 flex items-end justify-between"><div><p className="tech-label text-[var(--color-primary)]">01 / knowledge</p><h2 className="mt-3 text-4xl font-bold">Últimos artigos</h2></div><Link className="arrow-link hidden font-medium sm:block" href="/blog">Ver todos <span className="arrow">→</span></Link></div><div className="grid gap-4 md:grid-cols-3">{articles.map(article => <article className="group border bg-[var(--color-surface)] p-6 transition-transform hover:-translate-y-0.5" key={article.title}><div className="flex justify-between font-mono-tech text-xs"><span className="text-[var(--color-primary)]">[ {article.tag} ]</span><span className="text-[var(--color-text-muted)]">2026</span></div><h3 className="mt-10 text-2xl font-bold leading-tight">{article.title}</h3><p className="mt-4 leading-7 text-[var(--color-text-muted)]">{article.text}</p><Link className="arrow-link mt-8 inline-block font-medium" href="/blog">Ler artigo <span className="arrow">→</span></Link></article>)}</div></div></section>
+  <section className="section-rule"><div className="site-container py-20"><p className="tech-label text-[var(--color-green)]">02 / build_log</p><h2 className="mt-3 text-4xl font-bold">Projetos em destaque</h2><div className="mt-10 grid gap-4 md:grid-cols-2">{projects.map((project, i) => <article className="border bg-[var(--color-surface)] p-7" key={project.name}><div className="mb-16 flex justify-between"><span className="tech-label text-[var(--color-green)]">build_log</span>{i === 0 ? <Cloud size={20} /> : <Cpu size={20} />}</div><h3 className="text-3xl font-bold">{project.name}</h3><p className="mt-4 max-w-md leading-7 text-[var(--color-text-muted)]">{project.text}</p><p className="mt-7 font-mono-tech text-xs text-[var(--color-text-muted)]">{project.stack}</p><Link href="/projetos" className="arrow-link mt-7 inline-block font-medium">Ver projeto <span className="arrow">→</span></Link></article>)}</div></div></section>
+  <section className="section-rule"><div className="site-container grid gap-10 py-20 md:grid-cols-2"><div><p className="tech-label text-[var(--color-primary)]">03 / about</p><h2 className="mt-3 text-4xl font-bold">Aprender em público. Construir com intenção.</h2></div><div><p className="text-lg leading-8 text-[var(--color-text-muted)]">Estou construindo minha carreira enquanto estudo Engenharia de Software e compartilho o que funciona no caminho.</p><Link href="/sobre" className="arrow-link mt-6 inline-block font-medium">Conheça minha trajetória <span className="arrow">→</span></Link></div></div></section>
+  <section className="site-container py-20"><div className="bg-[#111] p-8 text-[#f3f0e8] sm:p-12"><Braces className="text-[var(--color-primary)]"/><p className="tech-label mt-10 text-[var(--color-primary)]">next_step</p><h2 className="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">Tecnologia sem se perder.</h2><p className="mt-5 max-w-xl text-[#bfc4c9]">Ideias, aprendizados e projetos para quem está construindo seu próprio caminho.</p><Link href="/blog" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-3 font-medium text-[#111]">Começar a explorar <ArrowUpRight size={18}/></Link></div></section></div>;
 }

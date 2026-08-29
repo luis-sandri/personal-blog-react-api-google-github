@@ -4,12 +4,14 @@ import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
 import { formatDate } from '@/lib/utils/formatDate';
 import { Comments } from '@/components/Comments';
+import { isSupabaseConfigured } from '@/lib/supabase/config';
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: PostPageProps) {
+  if (!isSupabaseConfigured) return { title: 'Post não encontrado' };
   const { slug } = await params;
   const supabase = await createClient();
 
@@ -33,6 +35,7 @@ export async function generateMetadata({ params }: PostPageProps) {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
+  if (!isSupabaseConfigured) notFound();
   const { slug } = await params;
   const supabase = await createClient();
 
